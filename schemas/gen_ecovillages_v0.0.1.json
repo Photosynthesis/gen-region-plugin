@@ -44,12 +44,76 @@
     "community_types": {
       "title": "Community types",
       "description": "",
-      "type": "array"
+      "type": "array",
+      "items": {
+         "type":"string",
+         "enum": [
+           "network",
+           "ecovillage",
+           "religious",
+           "intentional",
+           "traditional",
+           "indigenous",
+           "ecocity",
+           "ecocomun",
+           "ecopro",
+           "perma",
+           "green",
+           "learning",
+           "restorante",
+           "ecotour",
+           "youth",
+           "ecofarm",
+           "other",
+           "holistic",
+           "transition",
+           "cohousing",
+           "shared",
+           "unspecified"
+         ],
+         "enumNames": [
+           "Network of Ecovillage",
+           "Ecovillage",
+           "Religious or Spiritual",
+           "Intentional",
+           "Traditional",
+           "Indigenous",
+           "Eco City",
+           "Eco Community",
+           "Eco Project",
+           "Permaculture Project",
+           "Green School",
+           "Learning Centre",
+           "Restoration Site",
+           "Eco Tourism Site",
+           "Youth-led Project",
+           "Eco Farm",
+           "Other",
+           "Holistic Center",
+           "Transition Town",
+           "Cohousing",
+           "Shared Housing",
+           "Unspecified, Other"
+         ]
+       }
     },
     "gen_community_setting": {
       "title": "Community setting",
       "description": "",
-      "type": "array"
+      "type": "array",
+      "items": {
+        "type":"string",
+        "enum": [
+          "rural",
+          "urban",
+          "nomadic"
+        ],
+        "enumNames": [
+          "Rural",
+          "Urban",
+          "Nomadic"
+        ]
+      }
     },
     "country": {
        "title": "Country",
@@ -77,7 +141,17 @@
     "project_status": {
        "title": "Project status",
        "description": "",
-       "type": "string"
+       "type": "string",
+       "enum": [
+          "aspiring",
+          "established",
+          "disbanded"
+        ],
+        "enumNames": [
+          "Aspiring",
+          "Established",
+          "No longer active"
+        ]
     },
     "languages_spoken": {
        "title": "Languages spoken",
@@ -95,11 +169,31 @@
     "visitors_accepted": {
        "title": "Visitors accepted",
        "description": "",
-       "type": "string"
+       "type": "string",
+       "enum": [
+         "yes",
+         "rarely",
+         "no"
+       ],
+       "enumNames":[
+         "Yes",
+         "Yes,rarely",
+         "No"
+       ]
     },
     "new_members_accepted" : {
       "title": "New members accepted",
-      "type": "string"
+      "type": "string",
+      "enum": [
+        "yes",
+        "no",
+        "not"
+      ],
+      "enumNames": [
+        "Yes",
+        "No",
+        "Not currently(but there is a list or possibly in the future)"
+      ]
     },
     "geolocation": {
     "title": "Geolocation Coordinates",
