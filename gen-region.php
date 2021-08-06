@@ -19,6 +19,9 @@ $gen_murmagg_settings_overrides = array(
     ),
     'overwrite' => true, // If set to true, default values set here will overwrite values already set in the DB when the plugin is activated. Once the plugin is activated, this value has no effect. Default: false
   ),
+  'template_override_path' => array(
+    'default' => plugin_dir_path(__FILE__).'templates/'
+  ),
   'field_map_url' => array(
     'value' => plugin_dir_url(__FILE__).'schemas/gen_ecovillages_field_map.json',
     'overwrite' => true,
