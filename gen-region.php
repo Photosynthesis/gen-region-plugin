@@ -22,6 +22,15 @@ $gen_murmagg_settings_overrides = array(
     ),
     'overwrite' => true, // If set to true, default values set here will overwrite values already set in the DB when the plugin is activated. Once the plugin is activated, this value has no effect. Default: false
   ),
+  'filter_fields' => array(
+    'default' => [
+      'community_types',
+      'gen_community_setting',
+      'project_status',
+      'visitors_accepted'
+    ],
+    'overwrite' => true,
+  ),
   'template_override_path' => array(
     'default' => plugin_dir_path(__FILE__).'templates/'
   ),
