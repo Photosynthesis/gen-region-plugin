@@ -12,6 +12,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 register_activation_hook( __FILE__, 'gen_region_activate' );
 
+
+global $gen_murmagg_settings_overrides;
+
 $gen_murmagg_settings_overrides = array(
   'schemas' => array(
     'default' => array(
@@ -78,11 +81,12 @@ add_filter('murmurations-interfaces-settings', function( $settings ){
 
 function gen_region_activate(){
 
+  global $gen_murmagg_settings_overrides;
+
   if( is_callable( array( "Murmurations\Aggregator\Settings", "set" ) ) ){
 
-    global $gen_murmagg_settings_overrides;
-
     foreach ($gen_murmagg_settings_overrides as $field => $attribs) {
+
       if($attribs['overwrite'] == true ){
         if( isset($attribs['value']) || isset($attribs['default']) ){
 
