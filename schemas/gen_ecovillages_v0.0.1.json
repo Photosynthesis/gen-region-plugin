@@ -31,6 +31,18 @@
       "maxLength": 2000,
       "pattern": "https?://"
     },
+    "gen_project_image_url": {
+      "title": "Featured image URL",
+      "description": "Featured image URL",
+      "type": "string",
+      "pattern": "https?://"
+    },
+    "gen_project_image_thumbnail_url": {
+      "title": "Featured image thumbnail URL",
+      "description": "Featured image thumbnail URL",
+      "type": "string",
+      "pattern": "https?://"
+    },
     "description": {
       "title": "Description",
       "description": "",
