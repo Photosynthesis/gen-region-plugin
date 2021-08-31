@@ -1,68 +1,26 @@
-<div class="murmurations-node <?php echo $data_classes; ?>" id="<?php echo $data['url']; ?>">
-  <div class="murmurations-node-image"><img src="<?php echo $data['logo']; ?>" /></div>
-  <div class="murmurations-node-content">
-	<?php if ( $data['name'] ) : ?>
-	<h3 class="murmurations-node-name"><?php echo $data['name']; ?></h3>
-	<?php endif; ?>
-	<?php if ( $data['url'] ) : ?>
-	<div class="murmurations-node-url"><a href="<?php echo $data['url']; ?>"><?php echo $data['url']; ?></a></div>
-	<?php endif; ?>
-	<?php if ( $data['description'] ) : ?>
-	<div class="murmurations-node-description"><?php echo wp_trim_words( $data['description'], 40, '...' ); ?>
-		<?php
-		if ( Murmurations\Aggregator\Config::get('node_single') ) {
-			if ( Murmurations\Aggregator\Config::get('node_single_url_field') ) {
-				$href   = $data[ Murmurations\Aggregator\Config::get('node_single_url_field') ];
-				$target = ' target="_blank"';
-			} else {
-				$href = $data['guid'];
-			}
-			?>
-	  <a href="<?php echo $href; ?>" <?php echo $target; ?>>read more</a>
-			<?php
-		}
-		?>
-	</div>
-	<?php endif; ?>
-	<?php if ( $data['location'] ) : ?>
-	<div class="murmurations-node-location">
-		<?php
+<?php
+$project_url = $data[ Murmurations\Aggregator\Config::get('node_single_url_field') ];
 
-		$place_components = array();
+if ($data['gen_project_image_thumbnail_url']){
+  $data['gen_project_image_thumbnail_url'] = str_replace('staging', 'www', $data['gen_project_image_thumbnail_url']);
+}
 
-		if ( $data['location']['locality'] ) {
-			$place_components[] = $data['location']['locality'];
-		}
+?>
 
-		if ( $data['location']['region'] ) {
-			$place_components[] = $data['location']['region'];
-		}
+<article data-post-type="gen_project" class="gen_project entry wpautop <?= $data_classes ?>" aria-label="<?php echo $data['name']; ?>">
+  <header class="entry-header"><h2 class="entry-title"><a href="<?= $project_url ?>"><?php echo $data['name']; ?></a></h2></header><div class="project-info">
+    <ul class="project-meta ">
+      <li class="project-region"><b>Region</b>: <?= $data['gen_region'] ?></li>
+      <?php if ($data['languages_spoken']){ ?>
+        <li class="project-languages"><b>Languages</b>: <?= join(", ", $data['languages_spoken'] ) ?></li>
+      <?php } ?>
+    </ul></div>
 
-		echo join( ', ', $place_components );
+    <?php if ($data['gen_project_image_thumbnail_url']){ ?>
+      <a href="<?= $project_url ?>" title="<?= $data['name'] ?>" class="image-link alignleft" style="background-image: url(<?= $data['gen_project_image_thumbnail_url'] ?>)"></a>
+    <?php } ?>
 
-		?>
-	</div>
-	<?php endif; ?>
-	<?php
-
-	$specific_outputs = array( 'logo', 'name', 'url', 'description', 'location' );
-
-	foreach ( $data as $key => $value ) {
-		if ( ! in_array( $key, $specific_outputs ) && in_array( $key, Murmurations\Aggregator\Config::get('list_fields') ) ) {
-			if ( is_array( $value ) ) {
-				$value = join( ', ', $value );
-			}
-			if ( trim( $value ) ) {
-        $field = Murmurations\Aggregator\Schema::get($key);
-				?>
-		<div class="murmurations-list-field <?php echo $key; ?>">
-		  <div class="label"><?php echo $field['title']; ?></div>
-		  <div class="value"><?php echo $value; ?></div>
-		</div>
-				<?php
-			}
-		}
-	}
-	?>
+    <div class="entry-content"><?php echo wp_trim_words( $data['description'], 60, '...' ); ?> 
+  <a href="<?= $project_url ?>" target="_blank">read more</a>
   </div>
-</div>
+</article>
