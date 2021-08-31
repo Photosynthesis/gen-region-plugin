@@ -113,5 +113,6 @@ function gen_region_activate(){
 }
 
 
+wp_enqueue_style( 'gen-region', plugin_dir_url( __FILE__ ) . 'css/gen-region.css' );
 
 ?>
