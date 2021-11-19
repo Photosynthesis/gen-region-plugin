@@ -14,7 +14,7 @@ if ( Murmurations\Aggregator\Config::get('node_single') ) {
 }
 
 if ($data['gen_project_image_thumbnail_url']){
-  $data['gen_project_image_thumbnail_url'] = str_replace('staging', 'www', $data['gen_project_image_thumbnail_url']);
+  $data['gen_project_image_thumbnail_url'] = str_replace('ecodb-test', 'www', $data['gen_project_image_thumbnail_url']);
 }
 
 ?>
